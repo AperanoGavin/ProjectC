@@ -8,7 +8,7 @@ struct user{
     char email[50];
     char password[50];
     char username[50];
-    char phone[50];
+    char contact[50];
     char age[50];
 };
 
@@ -29,7 +29,9 @@ void generateUsername(char email[50], char username[50]){
 
 int main(int argc, char **argv) {
 
+
     int opt;
+    struct user user;
 
     printf("\n\t\t\t\t--------------------Welcom to Doctodog  --------------------");
     printf("\nChoose your operation ");
@@ -40,6 +42,22 @@ int main(int argc, char **argv) {
     printf("\n\nYour choice:\t");
     scanf("%d",&opt);
     fgetc(stdin);
+
+    switch (opt) {
+        case 1:
+            printf("\nEnter full name of your dog:\t");
+            takeinput(user.fullName);
+            printf("\nEnter your email :\t");
+            takeinput(user.email);
+            printf("\nEnter  age of your dog :\t");
+            takeinput(user.age);
+            printf("\nEnter your contact :\t");
+            takeinput(user.contact);
+            printf("\nEnter your password :\t");
+            takeinput(user.password);
+
+
+    }
 
 
     return 0;
