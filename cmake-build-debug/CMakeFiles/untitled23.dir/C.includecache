@@ -1,0 +1,36 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/macbook/CLionProjects/untitled23/conio for mac and windows/myconio_mac.c
+stdio.h
+-
+termios.h
+-
+unistd.h
+-
+stdlib.h
+-
+time.h
+-
+myconio_mac.h
+/Users/macbook/CLionProjects/untitled23/conio for mac and windows/myconio_mac.h
+
+/Users/macbook/CLionProjects/untitled23/conio for mac and windows/myconio_mac.h
+myconio_mac.c
+/Users/macbook/CLionProjects/untitled23/conio for mac and windows/myconio_mac.c
+
+/Users/macbook/CLionProjects/untitled23/main.c
+./conio for mac and windows/myconio_mac.h
+/Users/macbook/CLionProjects/untitled23/conio for mac and windows/myconio_mac.h
+stdio.h
+-
+string.h
+-
+unistd.h
+-
+
