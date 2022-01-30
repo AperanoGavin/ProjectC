@@ -3,18 +3,25 @@
 #include<string.h>
 #include <unistd.h>
 
+
+
 #define ENTER 13
 #define TAB 9
 #define BCKSPC 8
 
+
 struct user{
     char fullName[50];
+    char firstName[50];
+    char lastName[50];
     char email[50];
     char password[50];
     char username[50];
     char contact[50];
     char age[50];
-    char adresse[200];
+    char city[50];
+    char country[50];
+    char cp[50];
 };
 
 void takeinput(char ch[50]){
@@ -93,23 +100,33 @@ int main(int argc, char **argv) {
                     takeinput(user.age);
                     printf("Enter your contact :\t");
                     takeinput(user.contact);
-                    printf("Enter your adresse :\t");
-                    takeinput(user.adresse);
+                    printf("Enter your country :\t");
+                    takeinput(user.country);
+                    printf("Enter your city :\t");
+                    takeinput(user.city);
+                    printf("Enter your postal code  :\t");
+                    takeinput(user.cp);
                     printf("Enter your password :\t");
                     takepassword(user.password);
                     break;
                 case 2:
 
-                    printf("Enter full name:\t");
-                    takeinput(user.fullName);
+                    printf("Enter first name:\t");
+                    takeinput(user.firstName);
+                    printf("Enter last name:\t");
+                    takeinput(user.lastName);
                     printf("Enter your email :\t");
                     takeinput(user.email);
                     printf("Enter  age :\t");
                     takeinput(user.age);
                     printf("Enter your contact :\t");
                     takeinput(user.contact);
-                    printf("Enter your adresse :\t");
-                    takeinput(user.adresse);
+                    printf("Enter your country :\t");
+                    takeinput(user.country);
+                    printf("Enter your city :\t");
+                    takeinput(user.city);
+                    printf("Enter your postal code  :\t");
+                    takeinput(user.cp);
                     printf("Enter your password :\t");
                     takepassword(user.password);
                     break;
