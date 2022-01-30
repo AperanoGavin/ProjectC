@@ -31,22 +31,22 @@ void generateUsername(char email[50], char username[50]){
 
 }
 
-void takepassword(char password[50]){
+void takepassword(char pwd[50]){
     int i;
     char ch;
     while(1){
         ch = getch();
-        if (ch == ENTER || ch == TAB){
-            password[i]='\0';
+        if(ch == ENTER || ch == TAB){
+            pwd[i] = '\0';
             break;
-        } else if(ch == BCKSPC){
-            if(i<0){
+        }else if(ch == BCKSPC){
+            if(i>0){
                 i--;
                 printf("\b \b");
             }
 
         }else{
-            password[i++] = ch;
+            pwd[i++] = ch;
             printf("* \b");
         }
     }
