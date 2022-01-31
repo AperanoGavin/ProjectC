@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/untitled23.dir/main.c.o"
+  "CMakeFiles/untitled23.dir/sql-con.c.o"
   "untitled23"
   "untitled23.pdb"
 )

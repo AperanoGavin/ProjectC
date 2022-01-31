@@ -153,6 +153,30 @@ main.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled23.dir/build.make CMakeFiles/untitled23.dir/main.c.s
 .PHONY : main.c.s
 
+sql-con.o: sql-con.c.o
+.PHONY : sql-con.o
+
+# target to build an object file
+sql-con.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled23.dir/build.make CMakeFiles/untitled23.dir/sql-con.c.o
+.PHONY : sql-con.c.o
+
+sql-con.i: sql-con.c.i
+.PHONY : sql-con.i
+
+# target to preprocess a source file
+sql-con.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled23.dir/build.make CMakeFiles/untitled23.dir/sql-con.c.i
+.PHONY : sql-con.c.i
+
+sql-con.s: sql-con.c.s
+.PHONY : sql-con.s
+
+# target to generate assembly for a file
+sql-con.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled23.dir/build.make CMakeFiles/untitled23.dir/sql-con.c.s
+.PHONY : sql-con.c.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -165,6 +189,9 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... sql-con.o"
+	@echo "... sql-con.i"
+	@echo "... sql-con.s"
 .PHONY : help
 
 

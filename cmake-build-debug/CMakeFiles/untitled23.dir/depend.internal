@@ -4,4 +4,34 @@
 CMakeFiles/untitled23.dir/main.c.o
  /Users/macbook/CLionProjects/untitled23/conio for mac and windows/myconio_mac.c
  /Users/macbook/CLionProjects/untitled23/conio for mac and windows/myconio_mac.h
+ /Users/macbook/CLionProjects/untitled23/include/binary_log_types.h
+ /Users/macbook/CLionProjects/untitled23/include/my_alloc.h
+ /Users/macbook/CLionProjects/untitled23/include/my_command.h
+ /Users/macbook/CLionProjects/untitled23/include/my_list.h
+ /Users/macbook/CLionProjects/untitled23/include/mysql.h
+ /Users/macbook/CLionProjects/untitled23/include/mysql/client_plugin.h
+ /Users/macbook/CLionProjects/untitled23/include/mysql/plugin_auth_common.h
+ /Users/macbook/CLionProjects/untitled23/include/mysql/psi/psi_base.h
+ /Users/macbook/CLionProjects/untitled23/include/mysql/psi/psi_memory.h
+ /Users/macbook/CLionProjects/untitled23/include/mysql_com.h
+ /Users/macbook/CLionProjects/untitled23/include/mysql_time.h
+ /Users/macbook/CLionProjects/untitled23/include/mysql_version.h
+ /Users/macbook/CLionProjects/untitled23/include/typelib.h
  /Users/macbook/CLionProjects/untitled23/main.c
+CMakeFiles/untitled23.dir/sql-con.c.o
+ /Users/macbook/CLionProjects/untitled23/conio for mac and windows/myconio_mac.c
+ /Users/macbook/CLionProjects/untitled23/conio for mac and windows/myconio_mac.h
+ /Users/macbook/CLionProjects/untitled23/include/binary_log_types.h
+ /Users/macbook/CLionProjects/untitled23/include/my_alloc.h
+ /Users/macbook/CLionProjects/untitled23/include/my_command.h
+ /Users/macbook/CLionProjects/untitled23/include/my_list.h
+ /Users/macbook/CLionProjects/untitled23/include/mysql.h
+ /Users/macbook/CLionProjects/untitled23/include/mysql/client_plugin.h
+ /Users/macbook/CLionProjects/untitled23/include/mysql/plugin_auth_common.h
+ /Users/macbook/CLionProjects/untitled23/include/mysql/psi/psi_base.h
+ /Users/macbook/CLionProjects/untitled23/include/mysql/psi/psi_memory.h
+ /Users/macbook/CLionProjects/untitled23/include/mysql_com.h
+ /Users/macbook/CLionProjects/untitled23/include/mysql_time.h
+ /Users/macbook/CLionProjects/untitled23/include/mysql_version.h
+ /Users/macbook/CLionProjects/untitled23/include/typelib.h
+ /Users/macbook/CLionProjects/untitled23/sql-con.c

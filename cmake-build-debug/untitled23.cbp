@@ -81,6 +81,9 @@
 		<Unit filename="/Users/macbook/CLionProjects/untitled23/main.c">
 			<Option target="untitled23"/>
 		</Unit>
+		<Unit filename="/Users/macbook/CLionProjects/untitled23/sql-con.c">
+			<Option target="untitled23"/>
+		</Unit>
 		<Unit filename="/Users/macbook/CLionProjects/untitled23/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
