@@ -1,30 +1,11 @@
 #include "./conio for mac and windows/myconio_mac.h"
 #include<stdio.h>
 #include<string.h>
-#include <errno.h>
-#include <unistd.h>
-#include <pthread.h>
+//#include <errno.h>
+//#include <unistd.h>
+//#include <pthread.h>
 #include "./include/mysql.h"
 
-void main(){
-    MYSQL *con = NULL;
-    printf("initializing mysql ..\n");
-    con = mysql_init(NULL);
-    if(NULL == con){
-        printf("Failed to initialize mysql ...\n");
-        printf("Problem: %s\n",mysql_error(con));
-        return;
-    }
-    printf("attempting to connect \n");
-    if(NULL  == mysql_real_connect(con,"localhost","root","",NULL, 0, NULL, 0)){
-        printf("Failed to connect mysql ...\n");
-        printf("Problem: %s\n",mysql_error(con));
-        return;
-
-    }
-    printf("connected to  mysql ...\n");
-    mysql_error(con);
-}
 
 
 #define ENTER 13
@@ -86,6 +67,8 @@ void takepassword(char pwd[50]){
 int main(int argc, char **argv) {
 
 
+    MYSQL *conn;
+
     int opt;
     int opt2;
     struct user user;
@@ -115,6 +98,23 @@ int main(int argc, char **argv) {
 
             switch(opt2){
                 case 1:
+                    if ((conn = mysql_init(NULL)) == NULL)
+                    {
+                        fprintf(stderr, "Could not init DB\n");
+                        return EXIT_FAILURE;
+                    }
+                    if (mysql_real_connect(conn, "localhost", "root", "", "projectC", 3306, NULL, 0) == NULL)
+                    {
+                        fprintf(stderr, "DB Connection Error\n");
+                        return EXIT_FAILURE;
+                    }
+                    if (mysql_query(conn, 'INSERT INTO user (email, password) VALUES (takeinput(user.email), takepassword(user.password)') != 0)
+                    {
+                        fprintf(stderr, "Query Failure\n");
+                        return EXIT_FAILURE;
+                    }
+
+
                     printf("\nEnter full name of your dog:\t");
                     takeinput(user.fullName);
                     printf("Enter your email :\t");
@@ -131,6 +131,9 @@ int main(int argc, char **argv) {
                     takeinput(user.cp);
                     printf("Enter your password :\t");
                     takepassword(user.password);
+
+                    mysql_close(conn);
+                    //return EXIT_SUCCESS;
                     break;
                 case 2:
 
@@ -167,5 +170,5 @@ int main(int argc, char **argv) {
     }
 
 
-    return 0;
+    EXIT_SUCCESS;
 }
