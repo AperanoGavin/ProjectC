@@ -63,7 +63,9 @@ void takepassword(char pwd[50]){
 
 int main(int argc, char **argv) {
 
-
+    char query[2000];
+    MYSQL *conn;
+    conn = mysql_init(NULL);
     int opt;
     int opt2;
     struct user user;
@@ -93,6 +95,14 @@ int main(int argc, char **argv) {
 
             switch(opt2){
                 case 1:
+                    mysql_real_connect(conn, "localhost", "root", "", "projectC", 3306, NULL, 0);
+                    printf("\nEnter full name of your dog:\t");
+                   takeinput(user.fullName);
+                    sprintf(query, "INSERT INTO user(fullname) VALUES(%s)",user.fullName);
+                            mysql_query(conn, query);
+                    mysql_close(conn);
+
+
                     printf("\nEnter full name of your dog:\t");
                     takeinput(user.fullName);
                     printf("Enter your email :\t");
@@ -109,6 +119,7 @@ int main(int argc, char **argv) {
                     takeinput(user.cp);
                     printf("Enter your password :\t");
                     takepassword(user.password);
+
                     break;
                 case 2:
 

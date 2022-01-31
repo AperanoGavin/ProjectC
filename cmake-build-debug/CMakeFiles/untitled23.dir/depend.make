@@ -18,20 +18,3 @@ CMakeFiles/untitled23.dir/main.c.o: \
  ../include/mysql_version.h \
  ../include/typelib.h \
  ../main.c
-CMakeFiles/untitled23.dir/sql-con.c.o: \
- ../conio\ for\ mac\ and\ windows/myconio_mac.c \
- ../conio\ for\ mac\ and\ windows/myconio_mac.h \
- ../include/binary_log_types.h \
- ../include/my_alloc.h \
- ../include/my_command.h \
- ../include/my_list.h \
- ../include/mysql.h \
- ../include/mysql/client_plugin.h \
- ../include/mysql/plugin_auth_common.h \
- ../include/mysql/psi/psi_base.h \
- ../include/mysql/psi/psi_memory.h \
- ../include/mysql_com.h \
- ../include/mysql_time.h \
- ../include/mysql_version.h \
- ../include/typelib.h \
- ../sql-con.c
