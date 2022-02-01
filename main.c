@@ -131,6 +131,7 @@ int main(int argc, char **argv) {
 
                     break;
                 case 2:
+                    mysql_real_connect(conn, "localhost", "root", "", "projectC", 3306, NULL, 0);
 
                     printf("Enter first name:\t");
                     takeinput(user.firstName);
@@ -149,7 +150,11 @@ int main(int argc, char **argv) {
                     printf("Enter your postal code  :\t");
                     takeinput(user.cp);
                     printf("Enter your password :\t");
-                    takepassword(user.password);
+                    takeinput(user.password);
+
+                    sprintf(query, "INSERT INTO user(firstName,lastName,email,age,contact,country,city,cp,password)  VALUES('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s');",user.firstName,user.lastName, user.email, user.age, user.contact, user.country, user.city, user.cp, user.password);
+                    mysql_query(conn, query);
+                    mysql_close(conn);
                     break;
 
                 case 3:
