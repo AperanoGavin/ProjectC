@@ -98,7 +98,7 @@ int main(int argc, char **argv) {
                     mysql_real_connect(conn, "localhost", "root", "", "projectC", 3306, NULL, 0);
                     printf("\nEnter full name of your dog:\t");
                    takeinput(user.fullName);
-                    sprintf(query, "INSERT INTO user(fullname) VALUES(%s)",user.fullName);
+                    sprintf(query, "INSERT INTO user(fullName) VALUES('%s');",user.fullName);
                             mysql_query(conn, query);
                     mysql_close(conn);
 
