@@ -100,28 +100,35 @@ int main(int argc, char **argv) {
                     mysql_real_connect(conn, "localhost", "root", "", "projectC", 3306, NULL, 0);
                     printf("\nEnter full name of your dog:\t");
                     takeinput(user.fullName);
-                    sprintf(query, "INSERT INTO user(fullName) VALUES('%s');",user.fullName);
-                    mysql_query(conn, query);
+
 
 
                     printf("Enter your email :\t");
                     takeinput(user.email);
-                    sprintf(query, "INSERT INTO user(email) VALUES('%s');",user.email);
-                    mysql_query(conn, query);
-                    mysql_close(conn);
 
                     printf("Enter  age of your dog :\t");
                     takeinput(user.age);
+
                     printf("Enter your contact :\t");
                     takeinput(user.contact);
+
+
                     printf("Enter your country :\t");
                     takeinput(user.country);
+
                     printf("Enter your city :\t");
                     takeinput(user.city);
+
                     printf("Enter your postal code  :\t");
                     takeinput(user.cp);
+
                     printf("Enter your password :\t");
-                    takepassword(user.password);
+                    takeinput(user.password);
+
+                    sprintf(query, "INSERT INTO user(fullName,email,age,contact,country,city,cp,password)  VALUES('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s');",user.fullName, user.email, user.age, user.contact, user.country, user.city, user.cp, user.password);
+                    mysql_query(conn, query);
+                    mysql_close(conn);
+
                     break;
                 case 2:
 
