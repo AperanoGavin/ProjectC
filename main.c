@@ -10,6 +10,8 @@
 #define ENTER 13
 #define TAB 9
 #define BCKSPC 8
+#define KRED  "\x1B[31m"
+#define KGRN  "\x1B[32m"
 
 
 struct user{
@@ -64,8 +66,7 @@ void takepassword(char pwd[50]){
 int main(int argc, char **argv) {
 
     char query[2000];
-    char query1[2000];
-
+    char password1[50];
     MYSQL *conn;
     conn = mysql_init(NULL);
     int opt;
@@ -125,9 +126,23 @@ int main(int argc, char **argv) {
                     printf("Enter your password :\t");
                     takeinput(user.password);
 
+                    printf("Confirme your password :\t");
+                    takeinput(password1);
+
+
+                    if(!strcmp(user.password,password1)){
+                        printf("\n%syour password it's confirmed .\nplease see your mail",KGRN);
+
+                    }else{
+                        printf("\n\n\n/%spassword don't match try again\t", KRED);
+                        mysql_close(conn);
+                        break;
+                    }
+
                     sprintf(query, "INSERT INTO user(fullName,email,age,contact,country,city,cp,password)  VALUES('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s');",user.fullName, user.email, user.age, user.contact, user.country, user.city, user.cp, user.password);
                     mysql_query(conn, query);
                     mysql_close(conn);
+
 
                     break;
                 case 2:
@@ -140,19 +155,31 @@ int main(int argc, char **argv) {
                     printf("Enter your email :\t");
                     takeinput(user.email);
                     printf("Enter  age :\t");
-                    takeinput(user.age);
+                    takeinput(user.age);//int
                     printf("Enter your contact :\t");
-                    takeinput(user.contact);
+                    takeinput(user.contact);//int
                     printf("Enter your country :\t");
                     takeinput(user.country);
                     printf("Enter your city :\t");
                     takeinput(user.city);
                     printf("Enter your postal code  :\t");
-                    takeinput(user.cp);
+                    takeinput(user.cp);//int
                     printf("Enter your password :\t");
                     takeinput(user.password);
+                    printf("Confirme your password :\t");
+                    takeinput(password1);
+
+                    if(!strcmp(user.password,password1)){
+                        printf("\n%syour password it's confirmed .\nplease see your mail",KGRN);
+
+                    }else{
+                        printf("\n\n\n/%spassword don't match try again\t", KRED);
+                        mysql_close(conn);
+                        break;
+                    }
 
                     sprintf(query, "INSERT INTO user(firstName,lastName,email,age,contact,country,city,cp,password)  VALUES('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s');",user.firstName,user.lastName, user.email, user.age, user.contact, user.country, user.city, user.cp, user.password);
+
                     mysql_query(conn, query);
                     mysql_close(conn);
                     break;
