@@ -83,6 +83,7 @@ int main(int argc, char **argv) {
     MYSQL_ROW row;
 
 
+
     printf("\n\t\t\t\t--------------------Welcom to Doctodog  --------------------");
     printf("\nChoose your operation ");
     printf("\n1.Signup");
@@ -121,7 +122,7 @@ int main(int argc, char **argv) {
                     takeinput(user.age);//int
 
                     printf("Enter your contact :\t");
-                    takeinput(user.contact);//int
+                    takeinput(user.contact);//double
 
 
                     printf("Enter your country :\t");
@@ -148,6 +149,7 @@ int main(int argc, char **argv) {
                         fwrite(&user,sizeof (struct user),1,fp);
                             if(fwrite !=0){
                                 printf("\nYour username is :%s",user.username);
+
                             }
 
 
@@ -157,7 +159,7 @@ int main(int argc, char **argv) {
                         break;
                     }
 
-                    sprintf(query, "INSERT INTO user(fullName,email,age,contact,country,city,cp,password)  VALUES('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s');",user.fullName, user.email, user.age, user.contact, user.country, user.city, user.cp, user.password);
+                    sprintf(query, "INSERT INTO user(fullName,email,age,contact,country,city,cp,password,username)  VALUES('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s');",user.fullName, user.email, user.age, user.contact, user.country, user.city, user.cp, user.password,user.username);
                     mysql_query(conn, query);
                     mysql_close(conn);
 
@@ -175,7 +177,7 @@ int main(int argc, char **argv) {
                     printf("Enter  age :\t");
                     takeinput(user.age);//int
                     printf("Enter your contact :\t");
-                    takeinput(user.contact);//int
+                    takeinput(user.contact);//boub
                     printf("Enter your country :\t");
                     takeinput(user.country);
                     printf("Enter your city :\t");
@@ -189,6 +191,7 @@ int main(int argc, char **argv) {
 
                     if(!strcmp(user.password,password1)){
                         printf("\n%syour password it's confirmed .\nplease see your mail",KGRN);
+                        printf("\nYour username is :%s",user.username);
 
                     }else{
                         printf("\n\n\n/%spassword don't match try again\t", KRED);
@@ -196,7 +199,7 @@ int main(int argc, char **argv) {
                         break;
                     }
 
-                    sprintf(query, "INSERT INTO user(firstName,lastName,email,age,contact,country,city,cp,password)  VALUES('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s');",user.firstName,user.lastName, user.email, user.age, user.contact, user.country, user.city, user.cp, user.password);
+                    sprintf(query, "INSERT INTO user(firstName,lastName,email,age,contact,country,city,cp,password,username)  VALUES('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s','%s');",user.firstName,user.lastName, user.email, user.age, user.contact, user.country, user.city, user.cp, user.password,user.username);
 
                     mysql_query(conn, query);
                     mysql_close(conn);
@@ -212,21 +215,23 @@ int main(int argc, char **argv) {
             takeinput(username);
             printf("\nEnter your  password:\t");
             takeinput(password2);
-            sprintf(query, "SELECT COUNT(password)  FROM user  WHERE password='%s';",password2);
+            sprintf(query, "SELECT password  FROM user  WHERE password='%s';",password2);
             mysql_query(conn, query);
-
-            if(mysql_query(conn, query) != 0){
-
-               printf("\n %sconnexion succes",KGRN);
-               mysql_close(conn);
+            MYSQL_RES *result = mysql_use_result(conn);
 
 
+            if((row = mysql_fetch_row (result))){
+
+                printf("",row);
+                printf("\n %sconnexion succes",KGRN);
             }else{
-               printf("\n %sPlease try again",KRED);
+                printf("\n %sPlease try again",KRED);
             }
 
 
 
+
+            mysql_close(conn);
 
 
             break;
