@@ -208,6 +208,7 @@ int main(int argc, char **argv) {
                 case 3:
                     break;
             }
+            break;
         case 2:
             mysql_real_connect(conn, "localhost", "root", "", "projectC", 3306, NULL, 0);
 
@@ -215,7 +216,7 @@ int main(int argc, char **argv) {
             takeinput(username);
             printf("\nEnter your  password:\t");
             takeinput(password2);
-            sprintf(query, "SELECT password  FROM user  WHERE password='%s';",password2);
+            sprintf(query, "SELECT password ,username  FROM user  WHERE password='%s' AND username='%s';",username,password2);
             mysql_query(conn, query);
             MYSQL_RES *result = mysql_use_result(conn);
 
