@@ -42,26 +42,7 @@ char generateUsername(char email[50], char username[50]){
 
 }
 
-void takepassword(char pwd[50]){
-    int i;
-    char ch;
-    while(1){
-        ch = getch();
-        if(ch == ENTER || ch == TAB){
-            pwd[i] = '\0';
-            break;
-        }else if(ch == BCKSPC){
-            if(i>0){
-                i--;
-                printf("\b \b");
-            }
 
-        }else{
-            pwd[i++] = ch;
-            printf("* \b");
-        }
-    }
-}
 
 int main(int argc, char **argv) {
 
@@ -144,13 +125,11 @@ int main(int argc, char **argv) {
                     if(!strcmp(user.password,password1)){
                         printf("\n%syour password it's confirmed .\nuser register with succes",KGRN);
                         generateUsername(user.email, user.username);
+                        printf("\nYour username is :%s",user.username);
 
-                        fp = fopen("usersData.txt", "a+");
+                        fp= fopen("usersData", "a+");
                         fwrite(&user,sizeof (struct user),1,fp);
-                            if(fwrite !=0){
-                                printf("\nYour username is :%s",user.username);
-
-                            }
+                        fclose(fp);
 
 
                     }else{
@@ -193,6 +172,11 @@ int main(int argc, char **argv) {
                         printf("\n%syour password it's confirmed .\nplease see your mail",KGRN);
                         printf("\nYour username is :%s",user.username);
 
+                        fp= fopen("usersData", "a+");
+                        fwrite(&user,sizeof (struct user),1,fp);
+                        fclose(fp);
+
+
                     }else{
                         printf("\n\n\n/%spassword don't match try again\t", KRED);
                         mysql_close(conn);
@@ -225,6 +209,13 @@ int main(int argc, char **argv) {
 
                 printf("",row);
                 printf("\n %sconnexion succes",KGRN);
+
+                printf("\n\t\t\t\t\t\tWelcome %s",user.fullName);
+                printf("\n\n|Full Name:\t%s",user.fullName);
+                printf("\n|Email:\t\t%s",user.email);
+                printf("\n|Username:\t%s",user.username);
+                printf("\n|Contact no.:\t%s",user.contact);
+
             }else{
                 printf("\n %sPlease try again",KRED);
             }
