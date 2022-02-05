@@ -21,16 +21,25 @@ struct user{
     char email[50];
     char password[50];
     char username[50];
-    char contact[50];
-    char age[50];
     char city[50];
     char country[50];
-    char cp[50];
+    int cp;
+    double contact;
+    int age;
 };
 
 void takeinput(char ch[50]){
+    fflush(stdin);
     fgets(ch,50,stdin);
     ch[strlen(ch)-1] = 0;
+}
+void takeinputDb(double *db){
+    fflush(stdin);
+    scanf("%lf",db);
+}
+void takeinputIt(int *It){
+    fflush(stdin);
+    scanf("%d",It);
 }
 
 char generateUsername(char email[50], char username[50]){
@@ -65,7 +74,7 @@ int main(int argc, char **argv) {
 
 
 
-    printf("\n\t\t\t\t--------------------Welcom to Doctodog  --------------------");
+    printf("\n\t\t\t\t--------------------Welcome to Doctodog  --------------------");
     printf("\nChoose your operation ");
     printf("\n1.Signup");
     printf("\n2.Login");
@@ -99,11 +108,14 @@ int main(int argc, char **argv) {
                     printf("Enter your email :\t");
                     takeinput(user.email);
 
-                    printf("Enter  age of your dog :\t");
-                    takeinput(user.age);//int
+
+                    printf("Enter  age :\t");
+                    takeinputIt(&(user.age));//int
+
+
 
                     printf("Enter your contact :\t");
-                    takeinput(user.contact);//double
+                    takeinputDb(&(user.contact));//double
 
 
                     printf("Enter your country :\t");
@@ -113,7 +125,7 @@ int main(int argc, char **argv) {
                     takeinput(user.city);
 
                     printf("Enter your postal code  :\t");
-                    takeinput(user.cp);//int
+                    takeinputIt(&(user.cp));//int
 
                     printf("Enter your password :\t");
                     takeinput(user.password);
@@ -127,8 +139,9 @@ int main(int argc, char **argv) {
                         generateUsername(user.email, user.username);
                         printf("\nYour username is :%s",user.username);
 
-                        fp= fopen("usersData", "a+");
+                        fp= fopen("usersDataTest", "a+b");
                         fwrite(&user,sizeof (struct user),1,fp);
+
                         fclose(fp);
 
 
@@ -138,7 +151,7 @@ int main(int argc, char **argv) {
                         break;
                     }
 
-                    sprintf(query, "INSERT INTO user(fullName,email,age,contact,country,city,cp,password,username)  VALUES('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s');",user.fullName, user.email, user.age, user.contact, user.country, user.city, user.cp, user.password,user.username);
+                    sprintf(query, "INSERT INTO user(fullName,email,age,contact,country,city,cp,password,username)  VALUES('%s', '%s', '%d', '%lf', '%s', '%s', '%d', '%s', '%s');",user.fullName, user.email, user.age, user.contact, user.country, user.city, user.cp, user.password,user.username);
                     mysql_query(conn, query);
                     mysql_close(conn);
 
@@ -154,15 +167,15 @@ int main(int argc, char **argv) {
                     printf("Enter your email :\t");
                     takeinput(user.email);
                     printf("Enter  age :\t");
-                    takeinput(user.age);//int
+                    takeinputIt(&(user.age));//int
                     printf("Enter your contact :\t");
-                    takeinput(user.contact);//boub
+                    takeinputDb(&(user.contact));//boub
                     printf("Enter your country :\t");
                     takeinput(user.country);
                     printf("Enter your city :\t");
                     takeinput(user.city);
                     printf("Enter your postal code  :\t");
-                    takeinput(user.cp);//int
+                    takeinputIt(&(user.cp));//int
                     printf("Enter your password :\t");
                     takeinput(user.password);
                     printf("Confirme your password :\t");
@@ -172,7 +185,7 @@ int main(int argc, char **argv) {
                         printf("\n%syour password it's confirmed .\nplease see your mail",KGRN);
                         printf("\nYour username is :%s",user.username);
 
-                        fp= fopen("usersData", "a+");
+                        fp= fopen("usersDataTest", "a+b");
                         fwrite(&user,sizeof (struct user),1,fp);
                         fclose(fp);
 
@@ -183,7 +196,7 @@ int main(int argc, char **argv) {
                         break;
                     }
 
-                    sprintf(query, "INSERT INTO user(firstName,lastName,email,age,contact,country,city,cp,password,username)  VALUES('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s','%s');",user.firstName,user.lastName, user.email, user.age, user.contact, user.country, user.city, user.cp, user.password,user.username);
+                    sprintf(query, "INSERT INTO user(firstName,lastName,email,age,contact,country,city,cp,password,username)  VALUES('%s', '%s', '%s', '%d', '%lf', '%s', '%s', '%d', '%s','%s');",user.firstName,user.lastName, user.email, user.age, user.contact, user.country, user.city, user.cp, user.password,user.username);
 
                     mysql_query(conn, query);
                     mysql_close(conn);
@@ -200,7 +213,7 @@ int main(int argc, char **argv) {
             takeinput(username);
             printf("\nEnter your  password:\t");
             takeinput(password2);
-            sprintf(query, "SELECT password ,username  FROM user  WHERE password='%s' AND username='%s';",username,password2);
+            sprintf(query, "SELECT username, password   FROM user  WHERE username='%s' AND password='%s'  ;",username,password2);
             mysql_query(conn, query);
             MYSQL_RES *result = mysql_use_result(conn);
 
@@ -210,11 +223,23 @@ int main(int argc, char **argv) {
                 printf("",row);
                 printf("\n %sconnexion succes",KGRN);
 
+                fp= fopen("usersDataTest", "rb");
+                struct user temp;
+                if (fp == NULL)
+                    return -1;
+                while(fread(&temp, sizeof(struct user), 1, fp), !feof(fp)){
+
+
+
+
+
                 printf("\n\t\t\t\t\t\tWelcome %s",user.fullName);
                 printf("\n\n|Full Name:\t%s",user.fullName);
                 printf("\n|Email:\t\t%s",user.email);
                 printf("\n|Username:\t%s",user.username);
-                printf("\n|Contact no.:\t%s",user.contact);
+                printf("\n|Contact no.:\t%lf",user.contact);
+                }
+                fclose(fp);
 
             }else{
                 printf("\n %sPlease try again",KRED);
