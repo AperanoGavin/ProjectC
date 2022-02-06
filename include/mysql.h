@@ -487,8 +487,8 @@ int		STDCALL mysql_options4(MYSQL *mysql,enum mysql_option option,
 int             STDCALL mysql_get_option(MYSQL *mysql, enum mysql_option option,
                                          const void *arg);
 void		STDCALL mysql_free_result(MYSQL_RES *result);
-void		STDCALL mysql_data_seek(MYSQL_RES *result,
-					my_ulonglong offset);
+char        STDCALL mysql_data_seek(MYSQL_RES *result,
+                                    my_ulonglong offset);
 MYSQL_ROW_OFFSET STDCALL mysql_row_seek(MYSQL_RES *result,
 						MYSQL_ROW_OFFSET offset);
 MYSQL_FIELD_OFFSET STDCALL mysql_field_seek(MYSQL_RES *result,

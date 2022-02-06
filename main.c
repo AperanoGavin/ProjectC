@@ -12,6 +12,9 @@
 #define BCKSPC 8
 #define KRED  "\x1B[31m"
 #define KGRN  "\x1B[32m"
+#define KWHT  "\x1B[37m"
+#define KNRM  "\x1B[0m"
+
 
 
 struct user{
@@ -62,15 +65,18 @@ int main(int argc, char **argv) {
     FILE *fp;
     int opt;
     int opt2;
+    int userFound = 0;
     struct user user;
 
     //for case 2(opt)
     char password2[50];
     char username[50];
-    struct user userCon;
     int nb;
     MYSQL_RES *result;
     MYSQL_ROW row;
+    MYSQL_FIELD *field;
+    int mysql_stmt_fetch(MYSQL_STMT *stmt);
+
 
 
 
@@ -135,14 +141,15 @@ int main(int argc, char **argv) {
 
 
                     if(!strcmp(user.password,password1)){
-                        printf("\n%syour password it's confirmed .\nuser register with succes",KGRN);
+                        printf("\n%syour password it's confirmed .\nuser register with success",KGRN);
                         generateUsername(user.email, user.username);
                         printf("\nYour username is :%s",user.username);
 
-                        fp= fopen("usersDataTest", "a+b");
+                        fp= fopen("usersDataTest.bin", "ab");
                         fwrite(&user,sizeof (struct user),1,fp);
-
                         fclose(fp);
+
+
 
 
                     }else{
@@ -213,39 +220,30 @@ int main(int argc, char **argv) {
             takeinput(username);
             printf("\nEnter your  password:\t");
             takeinput(password2);
-            sprintf(query, "SELECT username, password   FROM user  WHERE username='%s' AND password='%s'  ;",username,password2);
+
+            sprintf(query, "SELECT *   FROM user  WHERE username='%s' AND password='%s'  ;",username,password2);
             mysql_query(conn, query);
             MYSQL_RES *result = mysql_use_result(conn);
+
+
 
 
             if((row = mysql_fetch_row (result))){
 
                 printf("",row);
-                printf("\n %sconnexion succes",KGRN);
+                printf("\n%sconnexion success",KGRN);
+                printf("\n\t\t\t\t%s--------------------Home page --------------------",KNRM);
 
-                fp= fopen("usersDataTest", "rb");
-                struct user temp;
-                if (fp == NULL)
-                    return -1;
-                while(fread(&temp, sizeof(struct user), 1, fp), !feof(fp)){
+                printf("\n|fullname:\t\t %s\n", row[1]);
+                printf("\n|Email:\t\t %s\n", row[6]);
+                printf("\n|age:\t\t %s\n", row[7]);
+                printf("\n|Contact :\t%s\n",row[8]);
 
-
-
-
-
-                printf("\n\t\t\t\t\t\tWelcome %s",user.fullName);
-                printf("\n\n|Full Name:\t%s",user.fullName);
-                printf("\n|Email:\t\t%s",user.email);
-                printf("\n|Username:\t%s",user.username);
-                printf("\n|Contact no.:\t%lf",user.contact);
-                }
-                fclose(fp);
 
             }else{
-                printf("\n %sPlease try again",KRED);
+                printf("\n %sPlease try again, password invalid",KRED);
+
             }
-
-
 
 
             mysql_close(conn);
