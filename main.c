@@ -3,6 +3,7 @@
 #include<string.h>
 #include<stdlib.h>
 #include "./include/mysql.h"
+#include "./include/curl/curl.h"
 #include <errno.h>
 #include <unistd.h>
 #include <pthread.h>
@@ -50,6 +51,7 @@ char generateUsername(char email[50], char username[50]){
     for(int i=0;i<strlen(email) ; i++){
         if(email[i] == '@')break;
         else username[i]= email[i];
+
     }
 
 }
@@ -65,6 +67,8 @@ int main(int argc, char **argv) {
     FILE *fp;
     int opt;
     int opt2;
+    int opt3;
+    int opt4;
     int userFound = 0;
     struct user user;
 
@@ -232,12 +236,56 @@ int main(int argc, char **argv) {
 
                 printf("",row);
                 printf("\n%sconnexion success",KGRN);
-                printf("\n\t\t\t\t%s--------------------Home page --------------------",KNRM);
 
-                printf("\n|fullname:\t\t %s\n", row[1]);
-                printf("\n|Email:\t\t %s\n", row[6]);
-                printf("\n|age:\t\t %s\n", row[7]);
-                printf("\n|Contact :\t%s\n",row[8]);
+                if((row[2]==NULL)){
+                    printf("\n\t\t\t\t%s--------------------Home page for Dog  --------------------",KNRM);
+                    printf("\nChoose your operation ");
+                    printf("\n1.Information");
+                    printf("\n2.Doctor");
+                    printf("\n3.Exit");
+
+                    printf("\n\nYour choice:\t");
+                    scanf("%d",&opt3);
+                    fgetc(stdin);
+
+                    switch (opt3){
+                        case 1:
+
+
+                            printf("\n\t\t\t\t%s--------------------Home page for Dog  --------------------",KNRM);
+
+                            printf("\n|fullname:\t\t %s\n", row[1]);
+                            printf("\n|Email:\t\t %s\n", row[6]);
+                            printf("\n|age:\t\t %s\n", row[7]);
+                            printf("\n|Contact :\t%s\n",row[8]);
+                        break;
+                    }
+
+                }else{
+
+                    printf("\n\t\t\t\t%s--------------------Home page for Dog  --------------------",KNRM);
+                    printf("\nChoose your operation ");
+                    printf("\n1.Information");
+                    printf("\n2.Customers(Dogs)");
+                    printf("\n3.Exit");
+
+                    printf("\n\nYour choice:\t");
+                    scanf("%d",&opt4);
+                    fgetc(stdin);
+                    switch (opt4) {
+
+                        case 1:
+
+
+                                    printf("\n\t\t\t\t%s--------------------Home page for Doctor  --------------------",KNRM);
+
+                                    printf("\n|fullname:\t\t %s\n", row[1]);
+                                    printf("\n|firstName:\t\t %s\n", row[2]);
+                                    printf("\n|Email:\t\t %s\n", row[6]);
+                                    printf("\n|age:\t\t %s\n", row[7]);
+                                    printf("\n|Contact :\t%s\n",row[8]);
+                        break;}
+                }
 
 
             }else{
