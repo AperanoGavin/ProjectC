@@ -61,14 +61,18 @@ char generateUsername(char email[50], char username[50]){
 int main(int argc, char **argv) {
 
     char query[2000];
+    char query1[2000];
     char password1[50];
     MYSQL *conn;
     conn = mysql_init(NULL);
+    MYSQL *conn1;
+    conn1 = mysql_init(NULL);
     FILE *fp;
     int opt;
     int opt2;
     int opt3;
     int opt4;
+    int j;
     int userFound = 0;
     struct user user;
 
@@ -77,13 +81,15 @@ int main(int argc, char **argv) {
     char username[50];
     int nb;
     MYSQL_RES *result;
+    MYSQL_RES *result1;
     MYSQL_ROW row;
+    MYSQL_ROW row1;
     MYSQL_FIELD *field;
     int mysql_stmt_fetch(MYSQL_STMT *stmt);
 
 
 
-
+    system("clear");
     printf("\n\t\t\t\t--------------------Welcome to Doctodog  --------------------");
     printf("\nChoose your operation ");
     printf("\n1.Signup");
@@ -93,9 +99,11 @@ int main(int argc, char **argv) {
     printf("\n\nYour choice:\t");
     scanf("%d",&opt);
     fgetc(stdin);
+    system("clear");
 
     switch(opt){
         case 1:
+
 
             printf("\n\t\t\t\t--------------------Signup --------------------");
             printf("\nChoose your operation ");
@@ -220,7 +228,9 @@ int main(int argc, char **argv) {
         case 2:
             mysql_real_connect(conn, "localhost", "root", "", "projectC", 3306, NULL, 0);
 
-            printf("\nEnter your  Username:\t");
+            printf("\n\t\t\t\t%s--------------------Login  --------------------",KNRM);
+
+            printf("\n\nEnter your  Username:\t");
             takeinput(username);
             printf("\nEnter your  password:\t");
             takeinput(password2);
@@ -235,12 +245,13 @@ int main(int argc, char **argv) {
             if((row = mysql_fetch_row (result))){
 
                 printf("",row);
-                printf("\n%sconnexion success",KGRN);
+                printf("\n\n\t\t\t\t\t\t%s    connexion success %s",KGRN,row[1]);
+                system("clear");
 
                 if((row[2]==NULL)){
                     printf("\n\t\t\t\t%s--------------------Home page for Dog  --------------------",KNRM);
                     printf("\nChoose your operation ");
-                    printf("\n1.Information");
+                    printf("\n1.Your Information");
                     printf("\n2.Doctor");
                     printf("\n3.Exit");
 
@@ -259,20 +270,50 @@ int main(int argc, char **argv) {
                             printf("\n|age:\t\t %s\n", row[7]);
                             printf("\n|Contact :\t%s\n",row[8]);
                         break;
-                    }
+
+                    case 2:
+                        mysql_free_result(result);
+
+
+
+                        mysql_real_connect(conn1, "localhost", "root", "", "projectC", 3306, NULL, 0);
+                            sprintf(query1, "SELECT *   FROM user where firstName != 'null' ;");
+                            mysql_query(conn1, query1);
+                            MYSQL_RES *result1 = mysql_use_result(conn1);
+
+                            if((row1 = mysql_fetch_row(result1))){
+                                if((row1!=0)){
+                                    for(j=0; j<row1 ;++j){
+
+                                    printf("\n|Test\t\t %s\n", row1[j]);
+                                    }
+
+                                }
+
+
+
+                            }
+
+                            mysql_close(conn1);
+
+
+
+                        break;
+                }
 
                 }else{
 
-                    printf("\n\t\t\t\t%s--------------------Home page for Dog  --------------------",KNRM);
+                    printf("\n\t\t\t\t%s--------------------Home page for Doctor  --------------------",KNRM);
                     printf("\nChoose your operation ");
-                    printf("\n1.Information");
+                    printf("\n1.Your Information");
                     printf("\n2.Customers(Dogs)");
                     printf("\n3.Exit");
 
                     printf("\n\nYour choice:\t");
                     scanf("%d",&opt4);
                     fgetc(stdin);
-                    switch (opt4) {
+
+                    switch(opt4) {
 
                         case 1:
 
@@ -285,6 +326,7 @@ int main(int argc, char **argv) {
                                     printf("\n|age:\t\t %s\n", row[7]);
                                     printf("\n|Contact :\t%s\n",row[8]);
                         break;}
+
                 }
 
 
