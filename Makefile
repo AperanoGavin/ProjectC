@@ -14,9 +14,10 @@ LIB_DIRECTORIES := -Llib
 
 
 
-C_FLAGS := -I/usr/local/Cellar/mysql/8.0.28/include/mysql
+C_FLAGS := -I/usr/local/Cellar/mysql/8.0.28/include/mysql -I/usr/local/Cellar/mingw-w64/9.0.0_2/toolchain-x86_64/x86_64-w64-mingw32/include/windows
 
-LIB_FLAGS := -L/usr/local/Cellar/mysql/8.0.28/lib -L/usr/local/Cellar/openssl@1.1/1.1.1m/lib -L/usr/local/Cellar/zstd/1.5.2/lib -lmysqlclient -lz -lzstd -lssl -lcrypto -lresolv -lzstd
+LIB_FLAGS := -L/usr/local/Cellar/mysql/8.0.28/lib    -L/usr/local/Cellar/openssl@1.1/1.1.1m/lib -L/usr/local/Cellar/zstd/1.5.2/lib -lmysqlclient -lz -lzstd -lssl -lcrypto -lresolv -lzstd
+
 
 
 
