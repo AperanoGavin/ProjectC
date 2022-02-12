@@ -284,13 +284,14 @@ int main(int argc, char **argv) {
                             MYSQL_RES *result1 = mysql_use_result(conn1);
 
                                 int num_fields = mysql_num_fields(result1);
+                                printf("\n|Name\t\t|Contact\t|Country\t|City\t\t|Code postal\t\t \n");
 
                                 while ((row1 = mysql_fetch_row(result1)))
                                 {
                                     for(int i = 0; i < num_fields; i++)
                                     {
 
-                                            printf("%s ""\t", row1[i] ? row1[i] : "NULL");
+                                            printf("%s ""\t\t", row1[i] ? row1[i] : "NULL");
 
 
                                     }
@@ -346,13 +347,14 @@ int main(int argc, char **argv) {
                             MYSQL_RES *result1 = mysql_use_result(conn1);
 
                             int num_fields = mysql_num_fields(result1);
+                            printf("\n|Name\t\t|Contact\t|Country\t|City\t\t|Code postal\t\t \n");
 
                             while ((row1 = mysql_fetch_row(result1)))
                             {
                                 for(int i = 0; i < num_fields; i++)
                                 {
 
-                                    printf("%s ""\t", row1[i] ? row1[i] : "NULL");
+                                    printf("%s  ""\t\t", row1[i] ? row1[i] : "NULL");
 
 
                                 }
