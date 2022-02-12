@@ -2,6 +2,7 @@
 #include<stdio.h>
 #include<string.h>
 #include<stdlib.h>
+
 #include "./include/mysql.h"
 #include "./include/curl/curl.h"
 #include <errno.h>
@@ -84,6 +85,7 @@ int main(int argc, char **argv) {
     MYSQL_RES *result1;
     MYSQL_ROW row;
     MYSQL_ROW row1;
+    MYSQL_ROW row_1;
     MYSQL_FIELD *field;
     int mysql_stmt_fetch(MYSQL_STMT *stmt);
 
@@ -277,23 +279,30 @@ int main(int argc, char **argv) {
 
 
                         mysql_real_connect(conn1, "localhost", "root", "", "projectC", 3306, NULL, 0);
-                            sprintf(query1, "SELECT *   FROM user where firstName != 'null' ;");
+                            sprintf(query1, "SELECT fullName,contact,country,city,cp   FROM user where firstName IS NOT NULL ;");
                             mysql_query(conn1, query1);
                             MYSQL_RES *result1 = mysql_use_result(conn1);
 
-                            if((row1 = mysql_fetch_row(result1))){
-                                if((row1!=0)){
-                                    for(j=0; j<row1 ;++j){
+                                int num_fields = mysql_num_fields(result1);
 
-                                    printf("\n|Test\t\t %s\n", row1[j]);
+                                while ((row1 = mysql_fetch_row(result1)))
+                                {
+                                    for(int i = 0; i < num_fields; i++)
+                                    {
+
+                                            printf("%s ""\t", row1[i] ? row1[i] : "NULL");
+
+
                                     }
 
+                                    printf("\n");
                                 }
 
 
 
-                            }
 
+
+                            mysql_free_result(result1);
                             mysql_close(conn1);
 
 
@@ -325,7 +334,45 @@ int main(int argc, char **argv) {
                                     printf("\n|Email:\t\t %s\n", row[6]);
                                     printf("\n|age:\t\t %s\n", row[7]);
                                     printf("\n|Contact :\t%s\n",row[8]);
-                        break;}
+                          break;
+                        case 2:
+                            mysql_free_result(result);
+
+
+
+                            mysql_real_connect(conn1, "localhost", "root", "", "projectC", 3306, NULL, 0);
+                            sprintf(query1, "SELECT fullName,contact,country,city,cp   FROM user where firstName IS NULL ;");
+                            mysql_query(conn1, query1);
+                            MYSQL_RES *result1 = mysql_use_result(conn1);
+
+                            int num_fields = mysql_num_fields(result1);
+
+                            while ((row1 = mysql_fetch_row(result1)))
+                            {
+                                for(int i = 0; i < num_fields; i++)
+                                {
+
+                                    printf("%s ""\t", row1[i] ? row1[i] : "NULL");
+
+
+                                }
+
+                                printf("\n");
+                            }
+
+
+
+
+
+                            mysql_free_result(result1);
+                            mysql_close(conn1);
+
+
+
+                            break;
+
+
+                    }
 
                 }
 
