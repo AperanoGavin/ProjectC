@@ -5,9 +5,7 @@
 
 #include "./include/mysql.h"
 #include "./include/curl/curl.h"
-#include <errno.h>
-#include <unistd.h>
-#include <pthread.h>
+
 
 
 #define KRED  "\x1B[31m"
@@ -88,8 +86,8 @@ int main(int argc, char **argv) {
 
 
     do {
-        system("clear");
-        printf("\n\t\t\t\t--------------------Welcome to Doctodog  --------------------");
+
+        printf("\n\t\t\t\t%s--------------------Welcome to Doctodog  --------------------",KNRM);
         printf("\nChoose your operation ");
         printf("\n1.Signup");
         printf("\n2.Login");
@@ -334,7 +332,7 @@ int main(int argc, char **argv) {
                             printf("\n1.Your Information");
                             printf("\n2.Customers(Dogs)");
                             printf("\n3.Return");
-                            printf("\n4.Exit");
+
 
                             printf("\n\nYour choice:\t");
                             scanf("%d", &opt4);
