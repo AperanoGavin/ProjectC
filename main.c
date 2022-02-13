@@ -16,6 +16,7 @@
 #define KGRN  "\x1B[32m"
 #define KWHT  "\x1B[37m"
 #define KNRM  "\x1B[0m"
+#define KBLU  "\x1B[34m"
 
 
 
@@ -69,7 +70,7 @@ int main(int argc, char **argv) {
     MYSQL *conn1;
     conn1 = mysql_init(NULL);
     FILE *fp;
-    int opt;
+    char opt;
     int opt2;
     int opt3;
     int opt4;
@@ -85,9 +86,7 @@ int main(int argc, char **argv) {
     MYSQL_RES *result1;
     MYSQL_ROW row;
     MYSQL_ROW row1;
-    MYSQL_ROW row_1;
     MYSQL_FIELD *field;
-    int mysql_stmt_fetch(MYSQL_STMT *stmt);
 
 
 
@@ -99,23 +98,26 @@ int main(int argc, char **argv) {
     printf("\n3.Exit");
 
     printf("\n\nYour choice:\t");
-    scanf("%d",&opt);
+    scanf("%s",&opt);
     fgetc(stdin);
     system("clear");
 
-    switch(opt){
-        case 1:
 
+    switch(opt){
+        case '1':
 
             printf("\n\t\t\t\t--------------------Signup --------------------");
             printf("\nChoose your operation ");
             printf("\n1.Signup for Dog");
             printf("\n2.Signup for Doctor");
-            printf("\n3.Exit");
+            printf("\n3.return");
+            printf("\n4.Exit");
 
             printf("\n\nYour choice:\t");
             scanf("%d",&opt2);
             fgetc(stdin);
+
+
 
             switch(opt2){
                 case 1:
@@ -224,10 +226,21 @@ int main(int argc, char **argv) {
                     break;
 
                 case 3:
+
                     break;
+
+
+
+                case 4:
+                    break;
+
+
+
+
+
             }
             break;
-        case 2:
+        case '2':
             mysql_real_connect(conn, "localhost", "root", "", "projectC", 3306, NULL, 0);
 
             printf("\n\t\t\t\t%s--------------------Login  --------------------",KNRM);
@@ -255,14 +268,18 @@ int main(int argc, char **argv) {
                     printf("\nChoose your operation ");
                     printf("\n1.Your Information");
                     printf("\n2.Doctor");
-                    printf("\n3.Exit");
+                    printf("\n3.Return");
+                    printf("\n4.Exit");
 
                     printf("\n\nYour choice:\t");
                     scanf("%d",&opt3);
+                    system("clear");
                     fgetc(stdin);
+
 
                     switch (opt3){
                         case 1:
+
 
 
                             printf("\n\t\t\t\t%s--------------------Home page for Dog  --------------------",KNRM);
@@ -284,14 +301,14 @@ int main(int argc, char **argv) {
                             MYSQL_RES *result1 = mysql_use_result(conn1);
 
                                 int num_fields = mysql_num_fields(result1);
-                                printf("\n|Name\t\t|Contact\t|Country\t|City\t\t|Code postal\t\t \n");
+                                printf("%s\n\t\t|Name\t\t|Contact\t|Country\t|City\t\t|Code postal\t\t \n", KBLU);
 
                                 while ((row1 = mysql_fetch_row(result1)))
                                 {
                                     for(int i = 0; i < num_fields; i++)
                                     {
 
-                                            printf("%s ""\t\t", row1[i] ? row1[i] : "NULL");
+                                        printf("%s""\t\t""%s",KNRM, row1[i] ? row1[i] : "NULL");
 
 
                                     }
@@ -309,6 +326,8 @@ int main(int argc, char **argv) {
 
 
                         break;
+                        case 3:
+                            break;
                 }
 
                 }else{
@@ -317,10 +336,12 @@ int main(int argc, char **argv) {
                     printf("\nChoose your operation ");
                     printf("\n1.Your Information");
                     printf("\n2.Customers(Dogs)");
-                    printf("\n3.Exit");
+                    printf("\n3.Return");
+                    printf("\n4.Exit");
 
                     printf("\n\nYour choice:\t");
                     scanf("%d",&opt4);
+                    system("clear");
                     fgetc(stdin);
 
                     switch(opt4) {
@@ -347,14 +368,15 @@ int main(int argc, char **argv) {
                             MYSQL_RES *result1 = mysql_use_result(conn1);
 
                             int num_fields = mysql_num_fields(result1);
-                            printf("\n|Name\t\t|Contact\t|Country\t|City\t\t|Code postal\t\t \n");
+                            printf("%s\n\t\t|Name\t\t|Contact\t|Country\t|City\t\t|Code postal\t\t \n", KBLU);
+
 
                             while ((row1 = mysql_fetch_row(result1)))
                             {
                                 for(int i = 0; i < num_fields; i++)
                                 {
 
-                                    printf("%s  ""\t\t", row1[i] ? row1[i] : "NULL");
+                                    printf("%s""\t\t""%s",KNRM, row1[i] ? row1[i] : "NULL");
 
 
                                 }
@@ -362,15 +384,8 @@ int main(int argc, char **argv) {
                                 printf("\n");
                             }
 
-
-
-
-
                             mysql_free_result(result1);
                             mysql_close(conn1);
-
-
-
                             break;
 
 
@@ -388,9 +403,14 @@ int main(int argc, char **argv) {
             mysql_close(conn);
 
 
-            break;
-        case 3:
-            break;
+                  break;
+                 case '3':
+                  break;
+                  default:
+                  printf("Sorry try again, you  got 3 choices.");
+                 break;
+
+
 
 
     }
