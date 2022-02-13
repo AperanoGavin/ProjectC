@@ -9,9 +9,7 @@
 #include <unistd.h>
 #include <pthread.h>
 
-#define ENTER 13
-#define TAB 9
-#define BCKSPC 8
+
 #define KRED  "\x1B[31m"
 #define KGRN  "\x1B[32m"
 #define KWHT  "\x1B[37m"
