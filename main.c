@@ -1,11 +1,12 @@
 #include "./conio for mac and windows/myconio_mac.h"
+#include "SDL2.framework/Headers/SDL.h"
 #include<stdio.h>
 #include<string.h>
 #include<stdlib.h>
+#include "./SDL2/Headers/SDL.h"
 
+#include <curl/curl.h>
 #include "./include/mysql.h"
-#include "./include/curl/curl.h"
-
 
 
 #define KRED  "\x1B[31m"
@@ -60,18 +61,22 @@ int main(int argc, char **argv) {
 
     char query[2000];
     char query1[2000];
+    char query2[2000];
     char password1[50];
     MYSQL *conn;
     conn = mysql_init(NULL);
     MYSQL *conn1;
+    MYSQL *conn2;
+    conn2 = mysql_init(NULL);
     conn1 = mysql_init(NULL);
     FILE *fp;
     char opt;
+
     char opt2;
     int opt3;
     int opt4;
     int j;
-    int userFound = 0;
+    int id;
     struct user user;
 
     //for case 2(opt)
@@ -80,18 +85,31 @@ int main(int argc, char **argv) {
     int nb;
     MYSQL_RES *result;
     MYSQL_RES *result1;
+    MYSQL_RES *result2;
     MYSQL_ROW row;
     MYSQL_ROW row1;
+    MYSQL_ROW row2;
+
     MYSQL_FIELD *field;
 
 
+    CURL *curl;
+    CURLcode curl_res;
+
+    curl_global_init(CURL_GLOBAL_ALL);
+
+    curl = curl_easy_init();
+
+
     do {
+
 
         printf("\n\t\t\t\t%s--------------------Welcome to Doctodog  --------------------",KNRM);
         printf("\nChoose your operation ");
         printf("\n1.Signup");
         printf("\n2.Login");
-        printf("\n3.Exit");
+        printf("\n3.Website");
+        printf("\n4.Exit");
 
         printf("\n\nYour choice:\t");
         scanf("%s", &opt);
@@ -102,6 +120,7 @@ int main(int argc, char **argv) {
         switch (opt) {
             case '1':
                 do {
+
 
                     printf("\n\t\t\t\t%s--------------------Signup --------------------",KNRM);
                     printf("\nChoose your operation ");
@@ -180,12 +199,14 @@ int main(int argc, char **argv) {
                         mysql_close(conn);
 
 
+
                         break;
                     case '2':
+
                         printf("\n\t\t\t\t%s--------------------Signup for Doctor--------------------",KNRM);
                         mysql_real_connect(conn, "localhost", "root", "", "projectC", 3306, NULL, 0);
 
-                        printf("Enter first name:\t");
+                        printf("\nEnter first name:\t");
                         takeinput(user.firstName);
                         printf("Enter last name:\t");
                         takeinput(user.lastName);
@@ -228,6 +249,7 @@ int main(int argc, char **argv) {
 
                         mysql_query(conn, query);
                         mysql_close(conn);
+
                         break;
 
 
@@ -266,7 +288,8 @@ int main(int argc, char **argv) {
                             printf("\nChoose your operation ");
                             printf("\n1.Your Information");
                             printf("\n2.Doctor");
-                            printf("\n3.Return");
+                            printf("\n3.Appointment");
+                            printf("\n4.Return");
 
 
                             printf("\n\nYour choice:\t");
@@ -286,22 +309,24 @@ int main(int argc, char **argv) {
                                     printf("\n|Email:\t\t %s\n", row[6]);
                                     printf("\n|age:\t\t %s\n", row[7]);
                                     printf("\n|Contact :\t%s\n", row[8]);
+
                                     break;
 
 
 
                                 case 2:
+
                                     mysql_free_result(result);
 
 
                                     mysql_real_connect(conn1, "localhost", "root", "", "projectC", 3306, NULL, 0);
                                     sprintf(query1,
-                                            "SELECT fullName,contact,country,city,cp   FROM user where firstName IS NOT NULL ;");
+                                            "SELECT id,fullName,contact,country,city,cp   FROM user where firstName IS NOT NULL ;");
                                     mysql_query(conn1, query1);
                                     MYSQL_RES *result1 = mysql_use_result(conn1);
 
                                     int num_fields = mysql_num_fields(result1);
-                                    printf("%s\n\t\t|Name\t\t|Contact\t|Country\t|City\t\t|Code postal\t\t \n", KBLU);
+                                    printf("%s\n\t\t|Id\t\t|Name\t\t|Contact\t|Country\t|City\t\t|Code postal\t\t \n", KBLU);
 
                                     while ((row1 = mysql_fetch_row(result1))) {
                                         for (int i = 0; i < num_fields; i++) {
@@ -313,15 +338,48 @@ int main(int argc, char **argv) {
 
                                         printf("\n");
                                     }
-
-
-                                    mysql_free_result(result1);
-                                    mysql_close(conn1);
-
+                                    //mysql_free_result(result1);
+                                    //mysql_close(conn1);
 
                                     break;
                                 case 3:
+                                    mysql_free_result(result);
+
+                                    mysql_real_connect(conn2, "localhost", "root", "", "projectC", 3306, NULL, 0);
+
+                                    printf("\nPlease enter id of doctor for take appointment:");
+                                    scanf("%d",&id);
+                                    sprintf(query2, "SELECT fullName,email,contact FROM USER where id ='%d' ;", id);
+                                    mysql_query(conn2, query2);
+                                    MYSQL_RES *result2 = mysql_use_result(conn2);
+                                    int num_fields1 = mysql_num_fields(result2);
+
+                                    while((row2 = mysql_fetch_row(result2))){
+
+
+                                        for (int j = 0; j < num_fields1; j++) {
+
+                                            printf("%s""\t\t""%s", KNRM, row2[j] ? row2[j] : "NULL");
+
+
+                                        }
+
+
+
+                                        printf("\n");
+
+                                    }
+
+
+
+                                    //mysql_free_result(result2);
+
+
+                                    //mysql_close(conn2);
                                     break;
+                                case 4:
+                                    break;
+
                             }
 
 
@@ -353,6 +411,7 @@ int main(int argc, char **argv) {
                                     printf("\n|age:\t\t %s\n", row[7]);
                                     printf("\n|Contact :\t%s\n", row[8]);
                                     break;
+
                                 case 2:
                                     mysql_free_result(result);
 
@@ -396,10 +455,48 @@ int main(int argc, char **argv) {
 
                     mysql_close(conn);
 
-
-
                 break;
 
+
+
+            case '3':
+                if (curl != NULL)
+                {
+                    curl_easy_setopt(curl, CURLOPT_URL, "http://localhost:8888/site3%203/index.php");
+                    curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1);
+                    // Perform the request, curl_res will get the return code
+                    curl_res = curl_easy_perform(curl);
+
+                    // Check for errors
+
+                    if(curl_res != CURLE_OK)
+                        fprintf(stderr, "curl_easy_perform() failed: %s\n",
+                                curl_easy_strerror(curl_res));
+
+                    if(CURLE_OK == curl_res)
+                    {
+                        char *url;
+                        curl_res = curl_easy_getinfo(curl, CURLINFO_EFFECTIVE_URL, &url);
+
+                        if((CURLE_OK == curl_res) && url)
+                            system("clear");
+                            printf("\n\n\n\n\t\tConnexion with website to take appointment : %s\n", url);
+
+                    }
+
+                    // always cleanup
+                    curl_easy_cleanup(curl);
+
+                    // we're done with libcurl, so clean it up
+                    curl_global_cleanup();
+
+                }
+                else
+                {
+                    printf("cURL error.\n");
+                }
+
+                break;
             default:
                 printf("Sorry try again.");
                 break;
@@ -407,7 +504,8 @@ int main(int argc, char **argv) {
 
         }
 
-    } while (opt != '3');
+    } while (opt != '4');
+
 
     printf("\n\t\n\tBye bye :')");
 

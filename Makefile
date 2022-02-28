@@ -1,4 +1,4 @@
-C_FILES := $(wildcard ./*.c src/*.c src/*/*.c)
+C_FILES := $(wildcard ./*.c src/*.c  src/*/*.c)
 
 O_FILES := $(subst .c,.o,$(C_FILES))
 
@@ -22,7 +22,7 @@ LIB_FLAGS := -L/usr/local/Cellar/mysql/8.0.28/lib    -L/usr/local/Cellar/openssl
 
 
 app: $(O_FILES)
-	gcc -g $( C_FLAGS ) $(LIB_FLAGS) -o main main.c  &&  ./main
+	(gcc -g -Wall -w $( C_FLAGS ) $(LIB_FLAGS) -std=c18 -Wall -pedantic -o main main.c -lSDL2  -lcurl  &&  ./main )
 
 
 
