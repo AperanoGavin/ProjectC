@@ -352,23 +352,16 @@ int main(int argc, char **argv) {
                                     sprintf(query2, "SELECT fullName,email,contact FROM USER where id ='%d' ;", id);
                                     mysql_query(conn2, query2);
                                     MYSQL_RES *result2 = mysql_use_result(conn2);
-                                    int num_fields1 = mysql_num_fields(result2);
-
-                                    while((row2 = mysql_fetch_row(result2))){
-
-
-                                        for (int j = 0; j < num_fields1; j++) {
-
-                                            printf("%s""\t\t""%s", KNRM, row2[j] ? row2[j] : "NULL");
-
-
-                                        }
+                                   if((row2 = mysql_fetch_row(result2)) != NULL){
+                                         printf("%s""\t\t""%s", KNRM, row2[1]);
 
 
 
-                                        printf("\n");
+                                    } else{
 
-                                    }
+                                       printf("oups");
+                                   }
+
 
 
 
