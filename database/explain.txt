@@ -1,0 +1,2 @@
+user.sql for mysql to 3306 with user 'root' and no passwor
+doctor.sql and users.sql for mysql to 8889 use with website

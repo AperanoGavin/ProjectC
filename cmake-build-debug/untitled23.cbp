@@ -8,38 +8,38 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/Users/macbook/CLionProjects/untitled23/cmake-build-debug"/>
+				<Option working_dir="/Users/macbook/CLionProjects/project_c_cmd/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/macbook/CLionProjects/untitled23/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/macbook/CLionProjects/untitled23/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/Users/macbook/CLionProjects/untitled23/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/macbook/CLionProjects/untitled23/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/local/bin/gmake -j4 -f &quot;/Users/macbook/CLionProjects/project_c_cmd/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/local/bin/gmake -j4 -f &quot;/Users/macbook/CLionProjects/project_c_cmd/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/local/bin/gmake -j4 -f &quot;/Users/macbook/CLionProjects/project_c_cmd/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/local/bin/gmake -j4 -f &quot;/Users/macbook/CLionProjects/project_c_cmd/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/Users/macbook/CLionProjects/untitled23/cmake-build-debug"/>
+				<Option working_dir="/Users/macbook/CLionProjects/project_c_cmd/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/macbook/CLionProjects/untitled23/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/macbook/CLionProjects/untitled23/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/Users/macbook/CLionProjects/untitled23/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/macbook/CLionProjects/untitled23/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/local/bin/gmake -j4 -f &quot;/Users/macbook/CLionProjects/project_c_cmd/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/local/bin/gmake -j4 -f &quot;/Users/macbook/CLionProjects/project_c_cmd/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/local/bin/gmake -j4 -f &quot;/Users/macbook/CLionProjects/project_c_cmd/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/local/bin/gmake -j4 -f &quot;/Users/macbook/CLionProjects/project_c_cmd/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="/Users/macbook/CLionProjects/untitled23/cmake-build-debug"/>
+				<Option working_dir="/Users/macbook/CLionProjects/project_c_cmd/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/macbook/CLionProjects/untitled23/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/macbook/CLionProjects/untitled23/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/Users/macbook/CLionProjects/untitled23/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/macbook/CLionProjects/untitled23/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/local/bin/gmake -j4 -f &quot;/Users/macbook/CLionProjects/project_c_cmd/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/local/bin/gmake -j4 -f &quot;/Users/macbook/CLionProjects/project_c_cmd/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/local/bin/gmake -j4 -f &quot;/Users/macbook/CLionProjects/project_c_cmd/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/local/bin/gmake -j4 -f &quot;/Users/macbook/CLionProjects/project_c_cmd/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="untitled23">
-				<Option output="/Users/macbook/CLionProjects/untitled23/cmake-build-debug/untitled23" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/Users/macbook/CLionProjects/untitled23/cmake-build-debug"/>
+				<Option output="/Users/macbook/CLionProjects/project_c_cmd/cmake-build-debug/untitled23" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/macbook/CLionProjects/project_c_cmd/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -51,15 +51,15 @@
 					<Add directory="/Library/Frameworks"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/macbook/CLionProjects/untitled23/cmake-build-debug/Makefile&quot;  VERBOSE=1 untitled23"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/macbook/CLionProjects/untitled23/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/Users/macbook/CLionProjects/untitled23/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/macbook/CLionProjects/untitled23/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/local/bin/gmake -j4 -f &quot;/Users/macbook/CLionProjects/project_c_cmd/cmake-build-debug/Makefile&quot;  VERBOSE=1 untitled23"/>
+					<CompileFile command="/usr/local/bin/gmake -j4 -f &quot;/Users/macbook/CLionProjects/project_c_cmd/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/local/bin/gmake -j4 -f &quot;/Users/macbook/CLionProjects/project_c_cmd/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/local/bin/gmake -j4 -f &quot;/Users/macbook/CLionProjects/project_c_cmd/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="untitled23/fast">
-				<Option output="/Users/macbook/CLionProjects/untitled23/cmake-build-debug/untitled23" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/Users/macbook/CLionProjects/untitled23/cmake-build-debug"/>
+				<Option output="/Users/macbook/CLionProjects/project_c_cmd/cmake-build-debug/untitled23" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/macbook/CLionProjects/project_c_cmd/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -71,17 +71,17 @@
 					<Add directory="/Library/Frameworks"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/macbook/CLionProjects/untitled23/cmake-build-debug/Makefile&quot;  VERBOSE=1 untitled23/fast"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/macbook/CLionProjects/untitled23/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/Users/macbook/CLionProjects/untitled23/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/macbook/CLionProjects/untitled23/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/local/bin/gmake -j4 -f &quot;/Users/macbook/CLionProjects/project_c_cmd/cmake-build-debug/Makefile&quot;  VERBOSE=1 untitled23/fast"/>
+					<CompileFile command="/usr/local/bin/gmake -j4 -f &quot;/Users/macbook/CLionProjects/project_c_cmd/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/local/bin/gmake -j4 -f &quot;/Users/macbook/CLionProjects/project_c_cmd/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/local/bin/gmake -j4 -f &quot;/Users/macbook/CLionProjects/project_c_cmd/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/Users/macbook/CLionProjects/untitled23/main.c">
+		<Unit filename="/Users/macbook/CLionProjects/project_c_cmd/main.c">
 			<Option target="untitled23"/>
 		</Unit>
-		<Unit filename="/Users/macbook/CLionProjects/untitled23/CMakeLists.txt">
+		<Unit filename="/Users/macbook/CLionProjects/project_c_cmd/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>

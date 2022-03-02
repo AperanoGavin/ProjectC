@@ -1,9 +1,6 @@
-#include "./conio for mac and windows/myconio_mac.h"
-#include "SDL2.framework/Headers/SDL.h"
 #include<stdio.h>
 #include<string.h>
 #include<stdlib.h>
-#include "./SDL2/Headers/SDL.h"
 
 #include <curl/curl.h>
 #include "./include/mysql.h"
@@ -103,7 +100,7 @@ int main(int argc, char **argv) {
 
     do {
 
-
+        //make menu
         printf("\n\t\t\t\t%s--------------------Welcome to Doctodog  --------------------",KNRM);
         printf("\nChoose your operation ");
         printf("\n1.Signup");
@@ -116,7 +113,7 @@ int main(int argc, char **argv) {
         fgetc(stdin);
         system("clear");
 
-
+        //use switch to enter in different menu
         switch (opt) {
             case '1':
                 do {
@@ -140,7 +137,7 @@ int main(int argc, char **argv) {
                     case '1':
                         printf("\n\t\t\t\t%s--------------------Signup for Dog--------------------",KNRM);
 
-
+                        //for init conn use mysql_real_connect
                         mysql_real_connect(conn, "localhost", "root", "", "projectC", 3306, NULL, 0);
                         printf("\nEnter full name of your dog:\t");
                         takeinput(user.fullName);

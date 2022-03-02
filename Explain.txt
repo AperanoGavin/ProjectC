@@ -1,3 +1,7 @@
-execute program:  make (with Makefile for macbook air)
+execute program:  make (with Makefile for macbook air),please check and change link for use makefile 
 
-
+Put the website in your htdocs
+You can check in GitHub 
+https://github.com/AperanoGavin/ProjectC 
+https://github.com/AperanoGavin/website_basi_c_project 
+And don't forget to put  a little star :)
